@@ -1,0 +1,45 @@
+body {
+    font-family: 'Righteous', cursive;
+}
+
+h1 {
+    font-size: 50px;
+    padding-top: 15px;
+    text-align: left;
+    text-transform: capitalize;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style: none;
+    font-size: 17px;
+}
+
+img {
+margin-right: 20px;
+}
+
+strong {
+    font-size: 40px;
+}
+
+span.units {
+    position: relative;
+    font-size: 16px;
+    top: -18px;
+}
+
+.weather-app-wrapper {
+    max-width: 600px;
+    margin: 30px, auto;
+}
+
+.weather-app {
+    margin-top: 35px;
+    padding: 60px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
