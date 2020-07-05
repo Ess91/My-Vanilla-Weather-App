@@ -1,9 +1,10 @@
 body {
-    font-family: 'Righteous', cursive;
+    font-family: 'Montserrat', sans-serif;
 }
 
 h1 {
     font-size: 50px;
+    font-weight: bold;
     padding-top: 15px;
     text-align: left;
     text-transform: capitalize;
@@ -23,7 +24,9 @@ margin-right: 20px;
 }
 
 strong {
-    font-size: 40px;
+    font-size: 45px;
+
+    
 }
 
 span.units {
@@ -31,6 +34,7 @@ span.units {
     font-size: 16px;
     top: -18px;
 }
+
 
 .weather-app-wrapper {
     max-width: 600px;
@@ -42,4 +46,32 @@ span.units {
     padding: 60px;
     border: 1px solid black;
     border-radius: 5px;
+    background-image: linear-gradient(60deg, #96deda 0%, #50c9c3 100%);
 }
+
+.search-bar {
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 6px;
+    margin-top: 8px;
+    margin-right: 16px;
+    border: 1px solid #000cff;
+  }
+
+#submit-btn {
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 6px;
+    background-color: #000cff;
+    color: #ffffff;
+    border: 1px solid #000cff;
+  }
+
+  #current-btn {
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 6px;
+    background-color: #000cff;
+    color: #ffffff;
+    border: 1px solid #000cff;
+  }
