@@ -10,6 +10,7 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/styles.css" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   </head>
@@ -21,16 +22,16 @@
           <input type="submit" value="Search" id="submit-btn" />
           <input type="submit" value="Current Location" id="current-btn" />
 
-          <h1>London</h1>
+          <h1 id="city"></h1>
           <ul>
             <li>Saturday 04 July, 23:50</li>
-            <li>Cloudy</li>
+            <li id="description"></li>
           </ul>
           <div class="row">
             <div class="col-6">
               
                 <img src="images/iconfinder_weather_7_2682844.png" width="75" alt="Rain">
-               <strong>24</strong> <span class="units">°C | °F</span>
+               <strong id="temperature"></strong> <span class="units">°C | °F</span>
            
             </div>
             <div class="col-6">
@@ -50,5 +51,6 @@
         </small>
       </div>
     </div>
+    <script src="src/index.js"></script>
   </body>
 </html>
