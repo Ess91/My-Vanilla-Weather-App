@@ -17,6 +17,7 @@ ul {
 li {
     list-style: none;
     font-size: 17px;
+    text-transform: capitalize;
 }
 
 img {
@@ -57,6 +58,8 @@ span.units {
     margin-right: 16px;
     border: 1px solid #000cff;
   }
+
+  
 
 #submit-btn {
     border-radius: 5px;
