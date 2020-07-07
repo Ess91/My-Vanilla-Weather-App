@@ -36,7 +36,7 @@ span.units {
 }
 
 .weather-app-wrapper {
-  max-width: 600px;
+  max-width: 800px;
   margin: 30px, auto;
 }
 
@@ -66,6 +66,12 @@ span.units {
   text-decoration: none;
 }
 
+.card {
+  background-image: linear-gradient(60deg, #96deda 0%, #50c9c3 100%);
+  border: none;
+ margin-top: 30px;
+}
+
 #submit-btn {
   border-radius: 5px;
   font-size: 12px;
@@ -82,4 +88,8 @@ span.units {
   background-color: #000cff;
   color: #ffffff;
   border: 1px solid #000cff;
+}
+
+#temp {
+  font-size: 16px;
 }
