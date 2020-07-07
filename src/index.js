@@ -46,19 +46,22 @@ function displayTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-function search(event) {
-  event.preventDefault(); //Prevent page from reloading, have control over it!
-  let cityInputElement = document.querySelector("#city-input");
-  console.log(cityInputElement.value);
+function search(city) {
+  let apiKey = "c788fbd12920cbf73a67468fe8b0facb";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
 }
 
-let apiKey = "c788fbd12920cbf73a67468fe8b0facb";
-let city = "Accra";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function handleSubmit(event) {
+  event.preventDefault(); //Prevent page from reloading, have control over it!
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+  // console.log(cityInputElement.value);
+}
+
+search("London");
 
 //console.log(apiUrl);
 
-axios.get(apiUrl).then(displayTemperature);
-
 let form = document.querySelector("#search-form");
-form.addEventListener("submit", search);
+form.addEventListener("submit", handleSubmit);
