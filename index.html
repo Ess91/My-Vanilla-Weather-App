@@ -21,10 +21,11 @@
     <div class="container">
       <div class="weather-app-wrapper">
         <div class="weather-app">
-          <input type="text" class="search-bar" placeholder="Enter City..." />
-          <input type="submit" value="Search" id="submit-btn" />
-          <input type="submit" value="Current Location" id="current-btn" />
-
+          <form id="search-form">
+            <input type="text" class="search-bar" placeholder="Enter City..." />
+            <input type="submit" value="Search" id="submit-btn" />
+            <input type="submit" value="Current Location" id="current-btn" />
+          </form>
           <h1 id="city"></h1>
           <ul>
             <li>Last Updated: <span id="date"></span></li>
