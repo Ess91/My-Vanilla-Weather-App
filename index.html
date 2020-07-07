@@ -22,7 +22,13 @@
       <div class="weather-app-wrapper">
         <div class="weather-app">
           <form id="search-form">
-            <input type="text" class="search-bar" placeholder="Enter City..." id="city-input" autocomplete="off"/>
+            <input
+              type="text"
+              class="search-bar"
+              placeholder="Enter City..."
+              id="city-input"
+              autocomplete="off"
+            />
             <input type="submit" value="Search" id="submit-btn" />
             <input type="submit" value="Current Location" id="current-btn" />
           </form>
@@ -40,7 +46,10 @@
                 id="icon"
               />
               <strong id="temperature"></strong>
-              <span class="units"> <a href="#" id="cel-link" class="active"> °C </a>| <a href="#" id="fah-link">°F </a></span>
+              <span class="units">
+                <a href="#" id="cel-link" class="active"> °C </a>|
+                <a href="#" id="fah-link">°F </a></span
+              >
             </div>
             <div class="col-6">
               <ul>
@@ -51,71 +60,20 @@
             </div>
           </div>
 
-          <div class="row">
-            <div class="col">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Thurs</h5>
-                  <p class="weather-advisory">
-                    <img src="images/iconfinder_weather_13_2682838.png" width="80"alt="Cloud">
-                  </p>
-                  <p class="temperature">17°C</p>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Fri</h5>
-                  <p class="weather-advisory">
-                    <img src="images/iconfinder_weather_7_2682844.png" width="80" alt="Sun-Rain">
-                  </p>
-                  <p class="temperature">18°C</p>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Sat</h5>
-                  <p class="weather-advisory">
-                    <img src="images/iconfinder_weather_13_2682838.png" width="80"alt="Cloud">
-                  </p>
-                  <p class="temperature">19°C</p>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Sun</h5>
-                  <p class="weather-advisory">
-                    <img src="images/iconfinder_weather_7_2682844.png" width="80" alt="Sun-Rain">
-                  </p>
-                  <p class="temperature">18°C</p>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Mon</h5>
-                  <p class="weather-advisory">
-                    <img src="images/iconfinder_weather_13_2682838.png" width="80"alt="Cloud">
-                  </p>
-                  <p class="temperature">20°C</p>
-                </div>
+          <div class="row-weather-advisory" id="forecast">
+            <div class="col-2">
+              <h6>12:00</h6>
+              <img
+                src="images/iconfinder_weather_13_2682838.png"
+                width="30"
+                alt="Cloud"
+              />
+              <div class="weather-advisory-temp">
+                <strong id="temp">17 °C</strong> 16°C
               </div>
             </div>
 
-
-
-</div>
-
+          </div>
         </div>
         <small>
           <a href="https://github.com/Ess91/Vannila-Weather-App"

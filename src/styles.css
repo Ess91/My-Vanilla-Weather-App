@@ -72,6 +72,10 @@ span.units {
  margin-top: 30px;
 }
 
+.row-weather-advisory {
+  overflow: auto;
+}
+
 #submit-btn {
   border-radius: 5px;
   font-size: 12px;

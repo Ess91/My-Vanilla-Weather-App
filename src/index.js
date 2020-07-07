@@ -48,10 +48,19 @@ function displayTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
+function displayForecast(response) {
+  console.log(response.data);
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = 
+}
+
 function search(city) {
   let apiKey = "c788fbd12920cbf73a67468fe8b0facb";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function handleSubmit(event) {
@@ -67,7 +76,7 @@ function showFahTemp(event) {
   // remove the active class to the celsius link
   celsiusLink.classList.remove("active");
   //add the active class to the fahrenheit link
-  fahrenheitLink.classList.add("active")
+  fahrenheitLink.classList.add("active");
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
@@ -78,7 +87,6 @@ function showCelTemp(event) {
   fahrenheitLink.classList.remove("active");
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = celsiusTemperature;
-
 }
 
 search("London");
