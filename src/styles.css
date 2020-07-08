@@ -36,7 +36,7 @@ span.units {
 }
 
 .weather-app-wrapper {
-  max-width: 800px;
+  
   margin: 30px, auto;
 }
 
@@ -47,6 +47,8 @@ span.units {
   border-radius: 5px;
   background-image: linear-gradient(60deg, #96deda 0%, #50c9c3 100%);
 }
+
+
 
 .card-header {
   margin-top: 70px;
