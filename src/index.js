@@ -1,14 +1,6 @@
 function formatDate(timestamp) {
   let date = new Date(timestamp);
-  let hours = date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
 
-  let minutes = date.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
 
   let days = [
     "Sunday",
@@ -20,7 +12,21 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
-  return `${day}, ${hours}:${minutes}`;
+  return `${day}, ${formatHours(timestamp)}`;
+}
+
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}:${minutes}`;
 }
 
 function displayTemperature(response) {
@@ -54,12 +60,14 @@ function displayForecast(response) {
   console.log(forecast);
   forecastElement.innerHTML = `
   <div class="col-2">
-            <h6>12:00</h6>
-            <img src="images/iconfinder_weather_13_2682838.png" width="40" alt="Cloud" />
+            <h6>${formatHours(forecast.dt * 1000)}</h6>
+            <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" />
           
 
             <div class="weather-advisory-temp">
-              <strong id="temp">${Math.round(forecast.main.temp_max)}  °C</strong> 16 °C
+              <strong id="temp">${Math.round(
+                forecast.main.temp_max
+              )}°C</strong> ${Math.round(forecast.main.temp_min)}°C
             </div>
           </div>
   `;
