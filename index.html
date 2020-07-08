@@ -1,88 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather Page</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-      crossorigin="anonymous"
-    />
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="src/styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <div class="weather-app-wrapper">
-        <div class="weather-app">
-          <form id="search-form">
-            <input
-              type="text"
-              class="search-bar"
-              placeholder="Enter City..."
-              id="city-input"
-              autocomplete="off"
-            />
-            <input type="submit" value="Search" id="submit-btn" />
-            <input type="submit" value="Current Location" id="current-btn" />
-          </form>
-          <h1 id="city"></h1>
-          <ul>
-            <li>Last Updated: <span id="date"></span></li>
-            <li id="description"></li>
-          </ul>
-          <div class="row">
-            <div class="col-6">
-              <img
-                src="images/iconfinder_weather_7_2682844.png"
-                width="75"
-                alt="Rain"
-                id="icon"
-              />
-              <strong id="temperature"></strong>
-              <span class="units">
-                <a href="#" id="cel-link" class="active"> °C </a>|
-                <a href="#" id="fah-link">°F </a></span
-              >
-            </div>
-            <div class="col-6">
-              <ul>
-                <li>Wind: <span id="wind"></span>mph</li>
-                <li>Humidity: <span id="humidity"></span>%</li>
-                <li>Precipitation: 0%</li>
-              </ul>
-            </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Page</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="src/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="weather-app-wrapper">
+      <div class="weather-app">
+        <form id="search-form">
+          <input type="text" class="search-bar" placeholder="Enter City..." id="city-input" autocomplete="off" />
+          <input type="submit" value="Search" id="submit-btn" />
+          <input type="submit" value="Current Location" id="current-btn" />
+        </form>
+        <h1 id="city"></h1>
+        <ul>
+          <li>Last Updated: <span id="date"></span></li>
+          <li id="description"></li>
+        </ul>
+        <div class="row">
+          <div class="col-6">
+            <img src="images/iconfinder_weather_7_2682844.png" width="75" alt="Rain" id="icon" />
+            <strong id="temperature"></strong>
+            <span class="units">
+              <a href="#" id="cel-link" class="active"> °C </a>|
+              <a href="#" id="fah-link">°F </a></span>
           </div>
-
-          <div class="row-weather-advisory" id="forecast">
-            <div class="col-2">
-              <h6>12:00</h6>
-              <img
-                src="images/iconfinder_weather_13_2682838.png"
-                width="30"
-                alt="Cloud"
-              />
-              <div class="weather-advisory-temp">
-                <strong id="temp">17 °C</strong> 16°C
-              </div>
-            </div>
-
+          <div class="col-6">
+            <ul>
+              <li>Wind: <span id="wind"></span>mph</li>
+              <li>Humidity: <span id="humidity"></span>%</li>
+              <li>Precipitation: 0%</li>
+            </ul>
           </div>
         </div>
-        <small>
-          <a href="https://github.com/Ess91/Vannila-Weather-App"
-            >Open-sourced Code</a
-          >
-          by <a href="https://esscodes.wordpress.com/">Esther Agyare-Boateng</a>
-        </small>
+
+        
+        </div>
       </div>
     </div>
-    <script src="src/index.js"></script>
-  </body>
+    <small>
+      <a href="https://github.com/Ess91/Vannila-Weather-App">Open-sourced Code</a>
+      by <a href="https://esscodes.wordpress.com/">Esther Agyare-Boateng</a>
+    </small>
+  </div>
+  </div>
+  <script src="src/index.js"></script>
+</body>
+
 </html>
