@@ -48,6 +48,14 @@ span.units {
   background-image: linear-gradient(60deg, #96deda 0%, #50c9c3 100%);
 }
 
+.card-header {
+  margin-top: 70px;
+  margin-left: 20px;
+  padding: 20px 0 0 5px;
+  border-radius: 30px;
+  box-shadow: 3px 3px 3px #000cff;
+}
+
 .search-bar {
   border-radius: 5px;
   font-size: 12px;
@@ -96,4 +104,8 @@ span.units {
 
 #temp {
   font-size: 16px;
+}
+
+#search-form {
+  float: right;
 }
