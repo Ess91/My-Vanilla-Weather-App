@@ -48,19 +48,30 @@ function displayTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-//function displayForecast(response) {
-  //console.log(response.data);
-  //let forecastElement = document.querySelector("#forecast");
-  //forecastElement.innerHTML = 
-//}
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  let forecast = response.data.list[0];
+  console.log(forecast);
+  forecastElement.innerHTML = `
+  <div class="col-2">
+            <h6>12:00</h6>
+            <img src="images/iconfinder_weather_13_2682838.png" width="40" alt="Cloud" />
+          
+
+            <div class="weather-advisory-temp">
+              <strong id="temp">${Math.round(forecast.main.temp_max)}  °C</strong> 16 °C
+            </div>
+          </div>
+  `;
+}
 
 function search(city) {
   let apiKey = "c788fbd12920cbf73a67468fe8b0facb";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
 
- // apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
-  //axios.get(apiUrl).then(displayForecast);
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function handleSubmit(event) {

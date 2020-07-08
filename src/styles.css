@@ -73,7 +73,7 @@ span.units {
 }
 
 .row-weather-advisory {
-  overflow: auto;
+  margin-top: 40px;
 }
 
 #submit-btn {
