@@ -17,7 +17,7 @@ ul {
 li {
   list-style: none;
   font-size: 17px;
-  text-transform: capitalize;
+  
 }
 
 img {
@@ -87,6 +87,10 @@ span.units {
   text-align: center;
 }
 
+.forecast-wrapper {
+  border: 1px solid black;
+}
+
 #submit-btn {
   border-radius: 5px;
   font-size: 12px;
@@ -114,6 +118,6 @@ span.units {
   margin-left: 50px;
 }
 
-.forecast-wrapper {
-  border: 1px solid black;
+#description {
+  text-transform: capitalize;
 }
