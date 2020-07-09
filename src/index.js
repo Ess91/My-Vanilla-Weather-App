@@ -3,6 +3,24 @@
 function formatDate(timestamp) {
   let date = new Date(timestamp);
 
+  let now = date.getDate(); //current date i.e. 8th
+ 
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
+  ];
+  let month = months[date.getMonth()];
+
   let days = [
     "Sunday",
     "Monday",
@@ -13,7 +31,7 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
-  return `${day}, ${formatHours(timestamp)}`;
+  return `${day} ${now} ${month}, ${formatHours(timestamp)}`;
 }
 
 function formatHours(timestamp) {
