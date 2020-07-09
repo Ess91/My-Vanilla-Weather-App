@@ -113,3 +113,7 @@ span.units {
   float: right;
   margin-left: 50px;
 }
+
+.forecast-wrapper {
+  border: 1px solid black;
+}
