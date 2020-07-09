@@ -82,8 +82,9 @@ span.units {
  margin-top: 30px;
 }
 
-.row-weather-advisory {
+.row.weather-advisory {
   margin-top: 40px;
+  text-align: center;
 }
 
 #submit-btn {
@@ -110,4 +111,5 @@ span.units {
 
 #search-form {
   float: right;
+  margin-left: 50px;
 }
