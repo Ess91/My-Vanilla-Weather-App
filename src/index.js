@@ -80,6 +80,8 @@ function displayForecast(response) {
  
 }
 
+
+
 function search(city) {
   let apiKey = "c788fbd12920cbf73a67468fe8b0facb";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -95,6 +97,27 @@ function handleSubmit(event) {
   search(cityInputElement.value);
   // console.log(cityInputElement.value);
 }
+
+//GeoLocation
+function retrievePosition(position) {
+  console.log(position.coords.latitude);
+  console.log(position.coords.longitude);
+  let apiKey = "c788fbd12920cbf73a67468fe8b0facb";
+
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function getCurrentPosition() {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(retrievePosition);
+}
+
+let present = document.querySelector("#current-btn");
+present.addEventListener("click", getCurrentPosition);
+
 
 function showFahTemp(event) {
   event.preventDefault();
