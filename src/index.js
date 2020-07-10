@@ -90,10 +90,9 @@ function displayTemperature(response) {
 
   for (let index = 0; index < 5; index++) {
       dayForecast = response.data.daily[index];
- // console.log(response.data.daily);
+  console.log(response.data.daily);
   let nextDay = index + 1;
 
-  console.log(response.data.daily[index].dt * 1000);
   let day = new Date(response.data.data.daily[nextDay].dt * 1000);
   let days = [
     "Sunday",
@@ -114,7 +113,7 @@ function displayTemperature(response) {
       
   
       <div class="col">
-    <h6>${today}</h6>
+    <h6>${formatDate(dayForecast.dt*1000)}</h6>
     <img src="http://openweathermap.org/img/wn/${
                   dayForecast.weather[0].icon
                 }@2x.png" />
@@ -128,8 +127,6 @@ function displayTemperature(response) {
    axios.get(dailyUrl).then(dailyForecast);
 
   }
-
-
 
 
 // Every 3 Hour Forecast
