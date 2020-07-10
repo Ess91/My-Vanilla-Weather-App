@@ -81,6 +81,7 @@ function displayTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
   let lat = response.data.coord.lat;
   let lon = response.data.coord.lon;
+}
 
   function dailyForecast(response) {
     let dayForecastElement = document.querySelector("#dayForecast");
@@ -92,7 +93,7 @@ function displayTemperature(response) {
  // console.log(response.data.daily);
   let nextDay = index + 1;
 
-  console.log(response.data.daily[nextDay].dt * 1000);
+  console.log(response.data.daily[index].dt * 1000);
   let day = new Date(response.data.data.daily[nextDay].dt * 1000);
   let days = [
     "Sunday",
@@ -121,13 +122,15 @@ function displayTemperature(response) {
               </div>
       `;
     
-  }
-}
+   }
+   let dailyKey = "c788fbd12920cbf73a67468fe8b0facb";
+   let dailyUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=metric&appid=${dailyKey}`;
+   axios.get(dailyUrl).then(dailyForecast);
 
-let dailyKey = "c788fbd12920cbf73a67468fe8b0facb";
-let dailyUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=metric&appid=${dailyKey}`;
-axios.get(dailyUrl).then(dailyForecast);
-}
+  }
+
+
+
 
 // Every 3 Hour Forecast
 
