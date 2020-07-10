@@ -31,7 +31,7 @@ function formatDate(timestamp) {
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday",
+    "Saturday"
   ];
   let day = days[date.getDay()];
   return `${day} ${now} ${month}, ${formatHours(timestamp)}`;
@@ -79,7 +79,54 @@ function displayTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  let lat = response.data.coord.lat;
+  let lon = response.data.coord.lon;
 
+  function dailyForecast(response) {
+    let dayForecastElement = document.querySelector("#dayForecast");
+  dayForecastElement.innerHTML = null;
+  let dayForecast = null;
+
+  for (let index = 0; index < 5; index++) {
+      dayForecast = response.data.daily[index];
+ // console.log(response.data.daily);
+  let nextDay = index + 1;
+
+  console.log(response.data.daily[nextDay].dt * 1000);
+  let day = new Date(response.data.data.daily[nextDay].dt * 1000);
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+
+
+  let today = days[day.getDay()];
+  let dailyMax = Math.round(response.data.daily[nextday].temp.max);
+  let dailyMin = Math.round(response.data.daily[nextday].temp.min);
+  //console.log(formatWeek(dayForecast.dt * 1000));
+  dayForecastElement.innerHTML += `
+      
+  
+      <div class="col">
+    <h6>${today}</h6>
+    <img src="http://openweathermap.org/img/wn/${
+                  dayForecast.weather[0].icon
+                }@2x.png" />
+              <p class="forecast-temp">${dailyMax}</p>
+              </div>
+      `;
+    
+  }
+}
+
+let dailyKey = "c788fbd12920cbf73a67468fe8b0facb";
+let dailyUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=metric&appid=${dailyKey}`;
+axios.get(dailyUrl).then(dailyForecast);
 }
 
 // Every 3 Hour Forecast
@@ -113,61 +160,11 @@ function displayForecast(response) {
 
 
 
-//City Days
-function formatWeek (timestamp) {
-  let date = new Date(timestamp);
-
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-
-  let currentDay = days[date.getDay()];
-
-  return `${currentDay}`;
-}
-
-function fiveDay(response) {
-  console.log(response).data.coord.lat;
-  let lat = response.data.coord.lat;
-  let lon = response.data.coord.lon;
-  let apiurl = `https://api.openweathermap.org/data/2.5/onecall?${lat}&${lon}&
-exclude=current, minutely,hourly&appid=${apiKey}&units=metric`;
-axios.get(apiUrl).then(dailyForecast);
-}
 
 
-
-function dailyForecast(response) {
-  console.log(response.data.daily);
-  let dayForecastElement = document.querySelector("#dayForecast");
-  dayForecastElement.innerHTML = null;
- // let dayForecast = null;
 
   
-//console.log(response.data.daily);
-//  for (let index = 0; index < 5; index++) {
-  //  dayForecast = response.data.daily[index];
-
-//console.log(formatWeek(dayForecast.dt * 1000));
-//dayForecastElement.innerHTML += `
-    
-
-  //  <div class="col">
-  //<h6>${formatWeek(dayForecast.dt * 1000)}</h6>
-  //<img src="http://openweathermap.org/img/wn/${
-    //            dayForecast.weather[0].icon
-      //        }@2x.png" />
-        //    <p class="forecast-temp">${Math.round(dayForecast.daily.temp)}</p>
-          //  </div>
-  //  `;
-  //}
-}
+ 
 
 
 // Search City
