@@ -90,6 +90,7 @@ function displayForecast(response) {
   let forecast = null;
 
   for (let index = 0; index < 6; index++) {
+   
     forecast = response.data.list[index];
 
     forecastElement.innerHTML += `
@@ -132,6 +133,7 @@ function formatWeek (timestamp) {
 }
 
 function fiveDay(response) {
+  console.log(response).data.coord.lat;
   let lat = response.data.coord.lat;
   let lon = response.data.coord.lon;
   let apiurl = `https://api.openweathermap.org/data/2.5/onecall?${lat}&${lon}&
@@ -139,31 +141,32 @@ exclude=current, minutely,hourly&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(dailyForecast);
 }
 
+
+
 function dailyForecast(response) {
+  console.log(response.data.daily);
   let dayForecastElement = document.querySelector("#dayForecast");
   dayForecastElement.innerHTML = null;
-  let dayForecast = null;
+ // let dayForecast = null;
 
+  
 //console.log(response.data.daily);
-  for (let index = 0; index < 5; index++) {
-    dayForecast = response.data.daily[index];
-//let day = formatWeek(dayForecast.dt * 1000);
-//console.log(formatWeek(dayForecast.dt * 1000));   
+//  for (let index = 0; index < 5; index++) {
+  //  dayForecast = response.data.daily[index];
 
-//${formatWeek(dailyForecast.dt * 1000)}
-console.log(formatWeek(dayForecast.dt * 1000));
-dayForecastElement.innerHTML += `
+//console.log(formatWeek(dayForecast.dt * 1000));
+//dayForecastElement.innerHTML += `
     
 
-    <div class="col">
-  <h6>${formatWeek(dayForecast.dt * 1000)}</h6>
-  <img src="http://openweathermap.org/img/wn/${
-                dayForecast.weather[0].icon
-              }@2x.png" />
-            <p class="forecast-temp">${Math.round(dayForecast.daily.temp)}</p>
-            </div>
-    `;
-  }
+  //  <div class="col">
+  //<h6>${formatWeek(dayForecast.dt * 1000)}</h6>
+  //<img src="http://openweathermap.org/img/wn/${
+    //            dayForecast.weather[0].icon
+      //        }@2x.png" />
+        //    <p class="forecast-temp">${Math.round(dayForecast.daily.temp)}</p>
+          //  </div>
+  //  `;
+  //}
 }
 
 
