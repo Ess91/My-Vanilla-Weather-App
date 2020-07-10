@@ -1,3 +1,6 @@
+let apiKey = "c788fbd12920cbf73a67468fe8b0facb";
+
+
 //Date and Time
 
 function formatDate(timestamp) {
@@ -76,6 +79,7 @@ function displayTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
 }
 
 // Every 3 Hour Forecast
@@ -122,26 +126,41 @@ function formatWeek (timestamp) {
     "Saturday",
   ];
 
-  let day = day[date.getDay()];
+  let currentDay = days[date.getDay()];
 
-  return `${day}`;
+  return `${currentDay}`;
+}
+
+function fiveDay(response) {
+  let lat = response.data.coord.lat;
+  let lon = response.data.coord.lon;
+  let apiurl = `https://api.openweathermap.org/data/2.5/onecall?${lat}&${lon}&
+exclude=current, minutely,hourly&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(dailyForecast);
 }
 
 function dailyForecast(response) {
-  //console.log(daily);
-  let dailyForecastElement = document.querySelector("#dailyForecast");
-  dailyForecastElement.innerHTML = null;
-  let dailyForecast = null;
+  let dayForecastElement = document.querySelector("#dayForecast");
+  dayForecastElement.innerHTML = null;
+  let dayForecast = null;
 
+//console.log(response.data.daily);
   for (let index = 0; index < 5; index++) {
-    dailyForecast = response.data.daily[index];
-let day = formatWeek(dailyForecast.dt * 1000);
-   dailyForecastElement.innerHTML += `
+    dayForecast = response.data.daily[index];
+//let day = formatWeek(dayForecast.dt * 1000);
+//console.log(formatWeek(dayForecast.dt * 1000));   
+
+//${formatWeek(dailyForecast.dt * 1000)}
+console.log(formatWeek(dayForecast.dt * 1000));
+dayForecastElement.innerHTML += `
     
+
     <div class="col">
-  <h6>${day}</h6>
-  <img src="images/iconfinder_weather_13_2682838.png" width="80"alt="Cloud">
-            <p class="forecast-temp">${Math.round(dailyForecast.main.temp)}</p>
+  <h6>${formatWeek(dayForecast.dt * 1000)}</h6>
+  <img src="http://openweathermap.org/img/wn/${
+                dayForecast.weather[0].icon
+              }@2x.png" />
+            <p class="forecast-temp">${Math.round(dayForecast.daily.temp)}</p>
             </div>
     `;
   }
@@ -157,9 +176,6 @@ function search(city) {
 
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
-
-  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(dailyForecast);
 }
 
 // User Input
@@ -182,9 +198,7 @@ function retrievePosition(position) {
 
   //Forecast Daily
 
-apiurl = `https://api.openweathermap.org/data/2.5/onecall?${lat}&${lon}&
-exclude=current, minutely,hourly,daily&appid=${apiKey}&units=metric`;
-axios.get(apiUrl).then(dailyForecast);
+
   
 }
 
