@@ -51,6 +51,13 @@ function formatHours(timestamp) {
   return `${hours}:${minutes}`;
 }
 
+function formatWeekDay(timestamp) {
+  let dateTime = new Date(timestamp);
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
+  let currentDay = days[dateTime.getDay()];
+  return `${currentDay}`;
+}
+
 // Weather Information
 
 function displayTemperature(response) {
@@ -88,51 +95,7 @@ function displayTemperature(response) {
   axios.get(apiurl).then(dailyForecast);
 }
 
-  function dailyForecast(response) {
-    let dayForecastElement = document.querySelector("#dayForecast");
-  dayForecastElement.innerHTML = null;
-  let dayForecast = null;
-
-  for (let index = 0; index < 5; index++) {
-      dayForecast = response.data.daily[index];
-  console.log(response.data.daily);
-  let nextDay = index + 1;
-
-  let day = new Date(response.data.daily[nextDay].dt * 1000);
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-
-
-  let today = days[day.getDay()];
-  let dailyMax = Math.round(response.data.daily[nextday].temp.max);
-  let dailyMin = Math.round(response.data.daily[nextday].temp.min);
-  //console.log(formatWeek(dayForecast.dt * 1000));
-  dayForecastElement.innerHTML += `
-      
   
-      <div class="col">
-    <h6>${formatDate(dayForecast.dt*1000)}</h6>
-    <img src="http://openweathermap.org/img/wn/${
-                  dayForecast.weather[0].icon
-                }@2x.png" />
-              <p class="forecast-temp">${dailyMax}</p>
-              </div>
-      `;
-    
-   }
-   let dailyKey = "c788fbd12920cbf73a67468fe8b0facb";
-   let dailyUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=metric&appid=${dailyKey}`;
-   axios.get(dailyUrl).then(dailyForecast);
-
-  }
-
 
 // Every 3 Hour Forecast
 
@@ -161,6 +124,37 @@ function displayForecast(response) {
             </div>
     `;
   }
+}
+
+function dailyForecast(response) {
+  let dayForecastElement = document.querySelector("#dayForecast");
+dayForecastElement.innerHTML = null;
+let dayForecast = null;
+
+for (let index = 0; index < 5; index++) {
+    dayForecast = response.data.daily[index];
+console.log(response.data.daily);
+
+dayMax = `${Math.round(dayForecast.temp.max)}`;
+    dayMin = `${Math.round(dayForecast.temp.min)}`;
+
+dayForecastElement.innerHTML += `
+    
+
+    <div class="col">
+  <h6>${formatWeekDay(dayForecast.dt * 1000)}</h6>
+  <img src="http://openweathermap.org/img/wn/
+                dayForecast.weather[0].icon
+              }@2x.png" />
+            <p class="forecast-temp">${dayMax}</p>
+            </div>
+    `;
+  
+ }
+ let dailyKey = "c788fbd12920cbf73a67468fe8b0facb";
+ let dailyUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=metric&appid=${dailyKey}`;
+ axios.get(dailyUrl).then(dailyForecast);
+
 }
 
 
