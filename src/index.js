@@ -1,13 +1,12 @@
 let apiKey = "c788fbd12920cbf73a67468fe8b0facb";
 
-
 //Date and Time
 
 function formatDate(timestamp) {
   let date = new Date(timestamp);
 
   let now = date.getDate(); //current date i.e. 8th
- 
+
   let months = [
     "Jan",
     "Feb",
@@ -20,7 +19,7 @@ function formatDate(timestamp) {
     "Sep",
     "Oct",
     "Nov",
-    "Dec"
+    "Dec",
   ];
   let month = months[date.getMonth()];
 
@@ -31,7 +30,7 @@ function formatDate(timestamp) {
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
+    "Saturday",
   ];
   let day = days[date.getDay()];
   return `${day} ${now} ${month}, ${formatHours(timestamp)}`;
@@ -86,7 +85,7 @@ function displayTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
-  
+
   //Daily Forecast
   let lat = response.data.coord.lat;
   let lon = response.data.coord.lon;
@@ -94,8 +93,6 @@ function displayTemperature(response) {
   exclude=current, minutely,hourly&appid=${apiKey}&units=metric`;
   axios.get(apiurl).then(dailyForecast);
 }
-
-  
 
 // Every 3 Hour Forecast
 
@@ -105,7 +102,6 @@ function displayForecast(response) {
   let forecast = null;
 
   for (let index = 0; index < 6; index++) {
-   
     forecast = response.data.list[index];
 
     forecastElement.innerHTML += `
@@ -128,35 +124,33 @@ function displayForecast(response) {
 
 function dailyForecast(response) {
   let dayForecastElement = document.querySelector("#dayForecast");
-dayForecastElement.innerHTML = null;
-let dayForecast = null;
+  dayForecastElement.innerHTML = null;
+  let dayForecast = null;
 
-for (let index = 0; index < 5; index++) {
+  for (let index = 0; index < 5; index++) {
     dayForecast = response.data.daily[index];
-console.log(response.data.daily);
+    console.log(response.data.daily);
 
-dayMax = `${Math.round(dayForecast.temp.max)}`;
+    dayMax = `${Math.round(dayForecast.temp.max)}`;
     dayMin = `${Math.round(dayForecast.temp.min)}`;
 
-dayForecastElement.innerHTML += `
+    dayForecastElement.innerHTML += `
     
-
     <div class="col">
   <h6>${formatWeekDay(dayForecast.dt * 1000)}</h6>
-  <img src="http://openweathermap.org/img/wn/
-                dayForecast.weather[0].icon
-              }@2x.png" />
-            <p class="forecast-temp">${dayMax}</p>
+  <img src="http://openweathermap.org/img/wn/${
+    dayForecast.weather[0].icon
+  }@2x.png" />
+            <p class="forecast-temp"><strong>${dayMax}°C</strong> ${dayMin}°C</p>
             </div>
     `;
-  
- }
- let dailyKey = "c788fbd12920cbf73a67468fe8b0facb";
- let dailyUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=metric&appid=${dailyKey}`;
- axios.get(dailyUrl).then(dailyForecast);
-
+  }
+  let dailyKey = "c788fbd12920cbf73a67468fe8b0facb";
+  let lat = response.data.coord.lat;
+  let lon = response.data.coord.lon;
+  let dailyUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=metric&appid=${dailyKey}`;
+  axios.get(dailyUrl).then(dailyForecast);
 }
-
 
 // Search City
 
@@ -167,11 +161,9 @@ function search(city) {
 
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
-  
+
   //apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
   //axios.get(apiUrl).then(dailyForecast);
-
-  
 }
 
 // User Input
@@ -193,9 +185,6 @@ function retrievePosition(position) {
   axios.get(apiUrl).then(displayTemperature);
 
   //Forecast Daily
-
-
-  
 }
 
 function getCurrentPosition() {
@@ -231,8 +220,6 @@ function showCelTemp(event) {
 
 search("London");
 
-
-
 let celsiusTemperature = null; //global variable
 
 let form = document.querySelector("#search-form");
@@ -242,4 +229,4 @@ let fahrenheitLink = document.querySelector("#fah-link");
 fahrenheitLink.addEventListener("click", showFahTemp);
 
 let celsiusLink = document.querySelector("#cel-link");
-celsiusLink.addEventListener("click", showCelTemp); 
+celsiusLink.addEventListener("click", showCelTemp);
