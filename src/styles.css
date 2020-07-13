@@ -139,9 +139,3 @@ span.units {
 #description {
   text-transform: capitalize;
 }
-
-@media all and (min-width:481px) {
-  body {
-    font-family: 'Kalam', cursive;
-  }
-}
