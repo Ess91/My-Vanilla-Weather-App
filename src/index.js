@@ -87,6 +87,7 @@ function displayTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
   //Daily Forecast
+  
   let lat = response.data.coord.lat;
   let lon = response.data.coord.lon;
   let apiurl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&
@@ -122,14 +123,16 @@ function displayForecast(response) {
   }
 }
 
+//Five Day Forecast
+
 function dailyForecast(response) {
   let dayForecastElement = document.querySelector("#dayForecast");
   dayForecastElement.innerHTML = null;
   let dayForecast = null;
 
-  for (let index = 0; index < 5; index++) {
+  for (let index = 1; index < 6; index++) {
     dayForecast = response.data.daily[index];
-    console.log(response.data.daily);
+   // console.log(response.data.daily);
 
     dayMax = `${Math.round(dayForecast.temp.max)}`;
     dayMin = `${Math.round(dayForecast.temp.min)}`;
@@ -145,11 +148,6 @@ function dailyForecast(response) {
             </div>
     `;
   }
-  let dailyKey = "c788fbd12920cbf73a67468fe8b0facb";
-  let lat = response.data.coord.lat;
-  let lon = response.data.coord.lon;
-  let dailyUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&units=metric&appid=${dailyKey}`;
-  axios.get(dailyUrl).then(dailyForecast);
 }
 
 // Search City
@@ -162,8 +160,6 @@ function search(city) {
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 
-  //apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
-  //axios.get(apiUrl).then(dailyForecast);
 }
 
 // User Input
@@ -176,6 +172,7 @@ function handleSubmit(event) {
 }
 
 //GeoLocation
+
 function retrievePosition(position) {
   let apiKey = "c788fbd12920cbf73a67468fe8b0facb";
 
@@ -183,8 +180,6 @@ function retrievePosition(position) {
   let lon = position.coords.longitude;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(displayTemperature);
-
-  //Forecast Daily
 }
 
 function getCurrentPosition() {
