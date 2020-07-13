@@ -140,7 +140,7 @@ span.units {
   text-transform: capitalize;
 }
 
-@media all and (max-width: 600px) {
+@media screen and (max-width: 600px) {
   body {
     font-family: 'Kalam', cursive;
   }
