@@ -48,7 +48,7 @@ span.units {
 }
 
 .weather-app-wrapper {
-  
+  max-width: 800px;
   margin: 30px, auto;
   display: block;
   margin-left: 70px;
