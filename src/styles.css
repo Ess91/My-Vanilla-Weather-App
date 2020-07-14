@@ -139,3 +139,9 @@ span.units {
 #description {
   text-transform: capitalize;
 }
+
+@media only screen and (max-width:768px) {
+  [class*="col-"] {
+    width: 100%
+  }
+}
