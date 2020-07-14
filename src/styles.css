@@ -140,8 +140,21 @@ span.units {
   text-transform: capitalize;
 }
 
-@media only screen and (max-width:768px) {
-  [class*="col-"] {
-    width: 100%
+
+/* Mobile-Friendly */
+
+@media only screen and (max-width: 786px) {
+ 
+
+  h1 {
+    font-size: 24px;
   }
-}
+
+  
+
+  .weather-app {
+    padding-left: 5px;
+    margin-left: 5px;
+    float: left;
+  }
+  }
