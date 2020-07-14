@@ -2,7 +2,6 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-
 h1 {
   font-size: 50px;
   font-weight: bold;
@@ -18,7 +17,6 @@ ul {
 li {
   list-style: none;
   font-size: 17px;
-  
 }
 
 img {
@@ -44,7 +42,6 @@ span.units {
   position: relative;
   font-size: 16px;
   top: -18px;
-
 }
 
 .weather-app-wrapper {
@@ -60,9 +57,7 @@ span.units {
   border: 1px solid #000cff;
   border-radius: 5px;
   background-image: linear-gradient(60deg, #96deda 0%, #50c9c3 100%);
-  
 }
-
 
 .card-header {
   margin-top: 70px;
@@ -93,7 +88,7 @@ span.units {
 .card {
   background-image: linear-gradient(60deg, #96deda 0%, #50c9c3 100%);
   border: none;
- margin-top: 30px;
+  margin-top: 30px;
 }
 
 .row.weather-advisory {
@@ -140,17 +135,10 @@ span.units {
   text-transform: capitalize;
 }
 
-
 /* Mobile-Friendly */
 
 @media only screen and (max-width: 786px) {
-
-
-  
-
   .weather-app {
-    padding-left: 5px;
-    margin-left: 5px;
     float: left;
   }
-  }
+}
